@@ -8,6 +8,12 @@ import io
 from PIL import Image
 
 
+def raw_file(path):
+    with open(path, "r", encoding="utf8") as f:
+        result = f.read()
+    return result
+
+
 def cursor_styles():
     num_sizes = 20
     max_size = 128
@@ -71,35 +77,17 @@ def maze():
     return result
 
 
-def storage():
-    with open("src/storage.html", "r", encoding="utf8") as f:
-        result = f.read()
-
-    return result
-
-
-def yard():
-    with open("src/yard.html", "r", encoding="utf8") as f:
-        result = f.read()
-
-    return result
-
-
-def gateroom():
-    with open("src/gateroom.html", "r", encoding="utf8") as f:
-        result = f.read()
-
-    return result
-
-
 def main():
     with open("src/game.html", "r", encoding="utf8") as f:
         game = f.read()
 
+    game = game.replace("STATE_CTX", raw_file("src/state_ctx.css"))
+    game = game.replace("TIMER_CTX", raw_file("src/timer_ctx.css"))
+    game = game.replace("MAZE_CTX", raw_file("src/maze_ctx.css"))
     game = game.replace("MAZE", maze())
-    game = game.replace("STORAGE", storage())
-    game = game.replace("YARD", yard())
-    game = game.replace("GATEROOM", gateroom())
+    game = game.replace("STORAGE", raw_file("src/storage.html"))
+    game = game.replace("YARD", raw_file("src/yard.html"))
+    game = game.replace("GATEROOM", raw_file("src/gateroom.html"))
     game = game.replace("CURSORS", cursor_styles())
 
     with open("index.html", "w", encoding="utf8") as f:

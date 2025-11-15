@@ -22,145 +22,9 @@
       overflow: hidden;
     }
 
-    @property --has-gargoyle {
-      syntax: "<number>";
-      inherits: true;
-      initial-value: 0;
-    }
-    @property --has-carpenter {
-      syntax: "<number>";
-      inherits: true;
-      initial-value: 0;
-    }
-
-    .state-ctx {
-      animation-name: state-dead, state-gargoyle, state-carpenter;
-      animation-duration: 1ms, 1ms, 1ms;
-      animation-fill-mode: both, both, both;
-      animation-play-state: paused, paused, paused;
-      cursor: var(--cursor-alive) var(--cursor-x) var(--cursor-y), pointer;
-
-      &:has(.throw-hitbox:hover),
-      &:has(.repair:hover) {
-        animation-name: none, none, none;
-        animation-play-state: paused, paused, paused;
-      }
-      &:has(.abyss:hover) {
-        animation-name: state-dead, none, none;
-        animation-play-state: running, paused, paused;
-      }
-      &:has(.gargoyle-pickup:hover) {
-        animation-name: none, state-gargoyle, none;
-        animation-play-state: paused, running, paused;
-      }
-      &:has(.carpenter-pickup:hover) {
-        animation-name: none, none, state-carpenter;
-        animation-play-state: paused, paused, running;
-      }
-    }
-
-    @keyframes state-dead {
-      to {
-        cursor: var(--cursor-dead) var(--cursor-x) var(--cursor-y), pointer;
-      }
-    }
-    @keyframes state-gargoyle {
-      to {
-        cursor: var(--cursor-gargoyle) var(--cursor-x) var(--cursor-y), pointer;
-        --has-gargoyle: 1;
-      }
-    }
-    @keyframes state-carpenter {
-      to {
-        cursor: var(--cursor-carpenter) var(--cursor-x) var(--cursor-y), pointer;
-        --has-carpenter: 1;
-      }
-    }
-
-
-    @property --since-hit {
-      syntax: "<number>";
-      inherits: true;
-      initial-value: 0.0;
-    }
-    @property --approach-time {
-      syntax: "<number>";
-      inherits: true;
-      initial-value: 60.0;
-    }
-
-    .timer-ctx {
-      --approach: min(1.0, var(--since-hit) / var(--approach-time));
-      animation-name: approach, difficulty;
-      animation-duration: 1000s, 300s;
-      animation-timing-function: linear, linear;
-      animation-fill-mode: both, both;
-
-      &:has(.throw-hitbox:hover) {
-        animation-name: none, difficulty;
-      }
-    }
-
-    @keyframes approach {
-      to { --since-hit: 1000 }
-    }
-    @keyframes difficulty {
-      0% { --approach-time: 60.0 }
-      15% { --approach-time: 50.0 }
-      40% { --approach-time: 40.0 }
-      60% { --approach-time: 30.0 }
-      100% { --approach-time: 20.0 }
-    }
-
-    @property --hole1 {
-      syntax: "<number>";
-      inherits: true;
-      initial-value: 0;
-    }
-    @property --hole2 {
-      syntax: "<number>";
-      inherits: true;
-      initial-value: 0;
-    }
-    @property --hole3 {
-      syntax: "<number>";
-      inherits: true;
-      initial-value: 0;
-    }
-    .maze-ctx {
-      animation-name: hole1, hole2, hole3;
-      animation-duration: 10s, 12s, 25s;
-      animation-fill-mode: both, both, both;
-      animation-timing-function: step-end;
-
-      &:has(.repair.hole1:hover) {
-        animation-name: none, hole2, hole3;
-      }
-      &:has(.repair.hole2:hover) {
-        animation-name: hole1, none, hole3;
-      }
-      &:has(.repair.hole3:hover) {
-        animation-name: hole1, hole2, none;
-      }
-    }
-    @keyframes hole1 {
-      to { --hole1: 1; }
-    }
-    @keyframes hole2 {
-      to { --hole2: 1; }
-    }
-    @keyframes hole3 {
-      to { --hole3: 1; }
-    }
-    .hole1 {
-      --hole: var(--hole1);
-    }
-    .hole2 {
-      --hole: var(--hole2);
-    }
-    .hole3 {
-      --hole: var(--hole3);
-    }
+    STATE_CTX
+    TIMER_CTX
+    MAZE_CTX
 
     .aspect {
       position: fixed;
@@ -182,14 +46,13 @@
       margin: 0;
     }
 
-    .gameBoard {
+    .game-board {
       display: grid;
       grid-template-areas:
         "g y y"
         "m m s";
-      grid-template-columns: 40rem 72rem 40rem;
-      grid-template-rows: 38rem 44rem;
-      padding: 4rem;
+      grid-template-columns: 40rem 72rem 48rem;
+      grid-template-rows: 46rem 44rem;
       background-color: #888;
     }
 
@@ -244,7 +107,7 @@
       <div class="maze-ctx">
         <div class="aspect">
           <div class="perspective">
-            <div class="gameBoard">
+            <div class="game-board">
               <div class="gateroom">
                 GATEROOM
               </div>

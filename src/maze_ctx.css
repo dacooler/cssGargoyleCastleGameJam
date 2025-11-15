@@ -1,0 +1,49 @@
+@property --hole1 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --hole2 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --hole3 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+.maze-ctx {
+  animation-name: hole1, hole2, hole3;
+  animation-duration: 10s, 12s, 25s;
+  animation-fill-mode: both, both, both;
+  animation-timing-function: step-end;
+
+  &:has(.repair.hole1:hover) {
+    animation-name: none, hole2, hole3;
+  }
+  &:has(.repair.hole2:hover) {
+    animation-name: hole1, none, hole3;
+  }
+  &:has(.repair.hole3:hover) {
+    animation-name: hole1, hole2, none;
+  }
+}
+@keyframes hole1 {
+  to { --hole1: 1; }
+}
+@keyframes hole2 {
+  to { --hole2: 1; }
+}
+@keyframes hole3 {
+  to { --hole3: 1; }
+}
+.hole1 {
+  --hole: var(--hole1);
+}
+.hole2 {
+  --hole: var(--hole2);
+}
+.hole3 {
+  --hole: var(--hole3);
+}
