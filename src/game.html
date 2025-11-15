@@ -47,6 +47,13 @@
     .maze {
       grid-area: m;
       background-color: #ddd;
+
+      display: grid;
+      grid-template-columns: repeat(28, 1fr);
+      grid-template-rows: repeat(11, 1fr);
+    }
+    .cell {
+      background-color: brown;
     }
     .storage {
       grid-area: s;
@@ -65,8 +72,6 @@
     </div>
     <div class="maze">
       MAZE
-
-      <div style="width: 4rem; height: 4rem; background: red"></div>
     </div>
     <div class="storage">
       STORAGE
