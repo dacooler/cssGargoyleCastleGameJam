@@ -1,6 +1,56 @@
 #!/usr/bin/env python3
 
 
+import math
+import base64
+import io
+
+from PIL import Image
+
+
+def cursor_styles():
+    num_sizes = 20
+    max_size = 128
+    min_size = 10
+
+    result = ""
+
+    cursors = {}
+
+    for name in ["alive", "gargoyle"]:
+        cursors[name] = Image.open(f"assets/player_{name}.png")
+
+    for i, exp in enumerate(range(num_sizes)):
+        size = math.pow(max_size / min_size, exp / (num_sizes - 1)) * min_size
+
+        styles = f"--cursor-x: {round(size / 2)}; "
+        styles += f"--cursor-y: {round(size)}; "
+
+        for name, img in cursors.items():
+            scaled = img.resize((round(size), round(size)))
+
+            scaled_png = io.BytesIO()
+            scaled.save(scaled_png, format='PNG')
+            scaled_png = scaled_png.getvalue()
+
+            url = "data:image/png;base64," + base64.b64encode(scaled_png).decode("utf8")
+            styles += f"--cursor-{name}: url('{url}'); "
+
+        styles = f":root {{ {styles}}}"
+
+        if i > 0:
+            cursor_size_units = 10
+            window_width_units = 160
+            window_height_units = 90
+
+            min_width = round(window_width_units / cursor_size_units * size)
+            min_height = round(window_height_units / cursor_size_units * size)
+            styles = f"@media only screen and (min-width: {min_width}px) and (min-height: {min_height}px) {{ {styles} }}"
+
+        result += styles + "\n"
+
+    return result
+
 def main():
     with open("src/maze.txt", "r", encoding="utf8") as f:
         maze_lines = f.read()
@@ -11,10 +61,12 @@ def main():
             if cell == ".":
                 maze_cells += f"<div class='cell' style='grid-area: {y+1}/{x+1}'></div>"
 
+
     with open("src/game.html", "r", encoding="utf8") as f:
         game = f.read()
 
     game = game.replace("MAZE", maze_cells)
+    game = game.replace("CURSORS", cursor_styles())
 
     with open("index.html", "w", encoding="utf8") as f:
         f.write(game)

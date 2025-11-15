@@ -53,11 +53,20 @@
       grid-template-rows: repeat(11, 1fr);
     }
     .cell {
-      background-color: brown;
+      background-color: rgb(132, 95, 62);
     }
     .storage {
       grid-area: s;
       background-color: #eee;
+    }
+
+    CURSORS
+
+    html {
+      cursor: var(--cursor-alive) var(--cursor-x) var(--cursor-y), pointer;
+    }
+    .maze {
+      cursor: var(--cursor-gargoyle) var(--cursor-x) var(--cursor-y), pointer;
     }
   </style>
 </head>
