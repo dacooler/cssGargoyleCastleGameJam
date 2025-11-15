@@ -112,6 +112,56 @@
       100% { --approach-time: 20.0 }
     }
 
+    @property --hole1 {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+    @property --hole2 {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+    @property --hole3 {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+    .maze-ctx {
+      animation-name: hole1, hole2, hole3;
+      animation-duration: 10s, 12s, 25s;
+      animation-fill-mode: both, both, both;
+      animation-timing-function: step-end;
+
+      &:has(.repair.hole1:hover) {
+        animation-name: none, hole2, hole3;
+      }
+      &:has(.repair.hole2:hover) {
+        animation-name: hole1, none, hole3;
+      }
+      &:has(.repair.hole3:hover) {
+        animation-name: hole1, hole2, none;
+      }
+    }
+    @keyframes hole1 {
+      to { --hole1: 1; }
+    }
+    @keyframes hole2 {
+      to { --hole2: 1; }
+    }
+    @keyframes hole3 {
+      to { --hole3: 1; }
+    }
+    .hole1 {
+      --hole: var(--hole1);
+    }
+    .hole2 {
+      --hole: var(--hole2);
+    }
+    .hole3 {
+      --hole: var(--hole3);
+    }
+
     .aspect {
       position: fixed;
       left: calc(50% - 80rem);
@@ -154,21 +204,6 @@
 
 
 
-    @property --hole1 {
-      syntax: "<number>";
-      inherits: true;
-      initial-value: 0;
-    }
-    @property --hole2 {
-      syntax: "<number>";
-      inherits: true;
-      initial-value: 0;
-    }
-    @property --hole3 {
-      syntax: "<number>";
-      inherits: true;
-      initial-value: 0;
-    }
     .maze {
       grid-area: m;
       background-color: #ddd;
@@ -176,41 +211,8 @@
       display: grid;
       grid-template-columns: repeat(28, 1fr);
       grid-template-rows: repeat(11, 1fr);
-
-      animation-name: hole1, hole2, hole3;
-      animation-duration: 10s, 12s, 25s;
-      animation-fill-mode: both, both, both;
-      animation-timing-function: step-end;
-
-      &:has(.repair.hole1:hover) {
-        animation-name: none, hole2, hole3;
-      }
-      &:has(.repair.hole2:hover) {
-        animation-name: hole1, none, hole3;
-      }
-      &:has(.repair.hole3:hover) {
-        animation-name: hole1, hole2, none;
-      }
-    }
-    @keyframes hole1 {
-      to { --hole1: 1; }
-    }
-    @keyframes hole2 {
-      to { --hole2: 1; }
-    }
-    @keyframes hole3 {
-      to { --hole3: 1; }
     }
 
-    .hole1 {
-      --hole: var(--hole1);
-    }
-    .hole2 {
-      --hole: var(--hole2);
-    }
-    .hole3 {
-      --hole: var(--hole3);
-    }
     .abyss {
       background-color: #444;
     }
@@ -239,20 +241,22 @@
 <body>
   <div class="state-ctx">
     <div class="timer-ctx">
-      <div class="aspect">
-        <div class="perspective">
-          <div class="gameBoard">
-            <div class="gateroom">
-              GATEROOM
-            </div>
-            <div class="yard">
-              YARD
-            </div>
-            <div class="maze">
-              MAZE
-            </div>
-            <div class="storage">
-              STORAGE
+      <div class="maze-ctx">
+        <div class="aspect">
+          <div class="perspective">
+            <div class="gameBoard">
+              <div class="gateroom">
+                GATEROOM
+              </div>
+              <div class="yard">
+                YARD
+              </div>
+              <div class="maze">
+                MAZE
+              </div>
+              <div class="storage">
+                STORAGE
+              </div>
             </div>
           </div>
         </div>
