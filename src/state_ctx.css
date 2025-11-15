@@ -27,7 +27,7 @@
     animation-name: none, none, none;
     animation-play-state: paused, paused, paused;
   }
-  &:has(.game-board:not(:hover)),
+  &:not(:has(.game-board:hover)),
   &:has(.abyss:hover),
   &:has(.yard:hover) {
     animation-name: state-dead, none, none;

@@ -58,7 +58,7 @@ def cursor_styles():
     return result
 
 
-def maze():
+def maze_logic():
     with open("src/maze2.txt", "r", encoding="utf8") as f:
         maze_lines = f.read()
 
@@ -84,10 +84,10 @@ def main():
     game = game.replace("STATE_CTX", raw_file("src/state_ctx.css"))
     game = game.replace("TIMER_CTX", raw_file("src/timer_ctx.css"))
     game = game.replace("MAZE_CTX", raw_file("src/maze_ctx.css"))
-    game = game.replace("MAZE", maze())
-    game = game.replace("STORAGE", raw_file("src/storage.html"))
-    game = game.replace("YARD", raw_file("src/yard.html"))
-    game = game.replace("GATEROOM", raw_file("src/gateroom.html"))
+    game = game.replace("MAZE_LOGIC", maze_logic())
+    game = game.replace("STORAGE_LOGIC", raw_file("src/storage_logic.html"))
+    game = game.replace("YARD_LOGIC", raw_file("src/yard_logic.html"))
+    game = game.replace("GATEROOM_LOGIC", raw_file("src/gateroom_logic.html"))
     game = game.replace("CURSORS", cursor_styles())
 
     with open("index.html", "w", encoding="utf8") as f:

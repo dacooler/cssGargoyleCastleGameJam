@@ -8,6 +8,10 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --logic-opacity: 0.1;
+    }
+
     CURSORS
 
     html {
@@ -114,6 +118,16 @@
       grid-area: s;
       background-color: #eee;
     }
+
+    .graphics {
+      z-index: -3;
+    }
+    .graphics * {
+      background-color: pink !important;
+    }
+    .logic, .end-box, .stop-box {
+      opacity: var(--logic-opacity);
+    }
   </style>
 </head>
 
@@ -123,24 +137,43 @@
       <div class="maze-ctx">
         <div class="end-box"></div>
         <div class="stop-box"></div>
-        <div class="aspect">
+        <div class="aspect graphics">
           <div class="perspective">
             <div class="game-board">
               <div class="gateroom">
-                GATEROOM
+                GATEROOM_GRAPHICS
               </div>
               <div class="yard">
-                YARD
+                YARD_GRAPHICS
               </div>
               <div class="maze">
-                MAZE
+                MAZE_GRAPHICS
               </div>
               <div class="storage">
-                STORAGE
+                STORAGE_GRAPHICS
               </div>
             </div>
           </div>
         </div>
+        <div class="aspect logic">
+          <div class="perspective">
+            <div class="game-board">
+              <div class="gateroom">
+                GATEROOM_LOGIC
+              </div>
+              <div class="yard">
+                YARD_LOGIC
+              </div>
+              <div class="maze">
+                MAZE_LOGIC
+              </div>
+              <div class="storage">
+                STORAGE_LOGIC
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
