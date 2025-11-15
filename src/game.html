@@ -12,6 +12,7 @@
       font-size: min(calc(100vw / 160), calc(100vh / 90));
       background-color: black;
       margin: 0;
+      height: 100%;
     }
 
     body {
@@ -23,6 +24,38 @@
       transform: translate(-50%, -50%);
       background-color: white;
       margin: 0;
+    }
+
+    CURSORS
+
+    body {
+      animation-name: state-dead, state-gargoyle, state-carpenter;
+      animation-duration: 1e-6s, 1e-6s, 1e-6s;
+      animation-fill-mode: both, both, both;
+      animation-play-state: paused, paused, paused;
+      cursor: var(--cursor-alive) var(--cursor-x) var(--cursor-y), pointer;
+
+      &:has(.abyss:hover) {
+        animation-name: state-dead, none, none;
+        animation-play-state: running, paused, paused;
+      }
+      &:has(.yard:hover) {
+        animation-name: none, state-gargoyle, none;
+        animation-play-state: paused, running, paused;
+      }
+      &:has(.gateroom:hover) {
+        animation-name: none, none, state-carpenter;
+        animation-play-state: paused, paused, running;
+      }
+    }
+    @keyframes state-dead {
+      to { cursor: var(--cursor-dead) var(--cursor-x) var(--cursor-y), pointer; }
+    }
+    @keyframes state-gargoyle {
+      to { cursor: var(--cursor-gargoyle) var(--cursor-x) var(--cursor-y), pointer; }
+    }
+    @keyframes state-carpenter {
+      to { cursor: var(--cursor-carpenter) var(--cursor-x) var(--cursor-y), pointer; }
     }
 
     .gameBoard {
@@ -52,21 +85,15 @@
       grid-template-columns: repeat(28, 1fr);
       grid-template-rows: repeat(11, 1fr);
     }
+    .abyss {
+      background-color: #444;
+    }
     .cell {
       background-color: rgb(132, 95, 62);
     }
     .storage {
       grid-area: s;
       background-color: #eee;
-    }
-
-    CURSORS
-
-    html {
-      cursor: var(--cursor-alive) var(--cursor-x) var(--cursor-y), pointer;
-    }
-    .maze {
-      cursor: var(--cursor-gargoyle) var(--cursor-x) var(--cursor-y), pointer;
     }
   </style>
 </head>

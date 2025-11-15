@@ -60,6 +60,8 @@ def main():
         for x, cell in enumerate(line.strip()):
             if cell == ".":
                 maze_cells += f"<div class='cell' style='grid-area: {y+1}/{x+1}'></div>"
+            if cell == "x":
+                maze_cells += f"<div class='abyss' style='grid-area: {y+1}/{x+1}'></div>"
 
 
     with open("src/game.html", "r", encoding="utf8") as f:
