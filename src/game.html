@@ -4,6 +4,10 @@
 <head>
   <title>Gargoyle Grenadier: Gate Guard</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     html {
       font-size: min(calc(100vw / 160), calc(100vh / 90));
       background-color: black;
@@ -23,9 +27,31 @@
 
     .gameBoard {
       display: grid;
+      grid-template-areas:
+        "g y y"
+        "m m s";
+      grid-template-columns: 40rem 72rem 40rem;
+      grid-template-rows: 38rem 44rem;
+      padding: 4rem;
+      background-color: #888;
     }
 
-    .yard {}
+    .gateroom {
+      grid-area: g;
+      background-color: #eee;
+    }
+    .yard {
+      grid-area: y;
+      background-color: #fff;
+    }
+    .maze {
+      grid-area: m;
+      background-color: #ddd;
+    }
+    .storage {
+      grid-area: s;
+      background-color: #eee;
+    }
   </style>
 </head>
 
@@ -39,11 +65,12 @@
     </div>
     <div class="maze">
       MAZE
+
+      <div style="width: 4rem; height: 4rem; background: red"></div>
     </div>
     <div class="storage">
       STORAGE
     </div>
-
   </div>
 </body>
 
