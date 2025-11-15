@@ -51,27 +51,35 @@ def cursor_styles():
 
     return result
 
-def main():
+
+def maze():
     with open("src/maze.txt", "r", encoding="utf8") as f:
         maze_lines = f.read()
 
-    maze = ""
+    result = ""
     for y, line in enumerate(maze_lines.split("\n")):
         for x, cell in enumerate(line.strip()):
             if cell == ".":
-                maze += f"<div class='cell' style='grid-area: {y+1}/{x+1}'></div>"
+                result += f"<div class='cell' style='grid-area: {y+1}/{x+1}'></div>"
             if cell == "x":
-                maze += f"<div class='abyss' style='grid-area: {y+1}/{x+1}'></div>"
+                result += f"<div class='abyss' style='grid-area: {y+1}/{x+1}'></div>"
+
+    return result
 
 
+def storage():
     with open("src/storage.html", "r", encoding="utf8") as f:
-        storage = f.read()
+        result = f.read()
 
+    return result
+
+
+def main():
     with open("src/game.html", "r", encoding="utf8") as f:
         game = f.read()
 
-    game = game.replace("MAZE", maze)
-    game = game.replace("STORAGE", storage)
+    game = game.replace("MAZE", maze())
+    game = game.replace("STORAGE", storage())
     game = game.replace("CURSORS", cursor_styles())
 
     with open("index.html", "w", encoding="utf8") as f:
