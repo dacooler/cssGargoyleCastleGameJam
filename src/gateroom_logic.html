@@ -1,25 +1,23 @@
 <style>
-  .gateroom {
-    position: relative;
-  }
+  .logic {
+    .respawn-point {
+      position: absolute;
+      background-color: lightgreen;
 
-  .respawn-point {
-    position: absolute;
-    background-color: lightgreen;
+      left: 4rem;
+      top: 4rem;
+      width: calc(12rem * var(--has-dead));
+      height: 12rem;
+    }
 
-    left: 4rem;
-    top: 4rem;
-    width: calc(12rem * var(--has-dead));
-    height: 12rem;
-  }
-
-  .throw-hitbox {
-    background-color: red;
-    position:absolute;
-    right: 0%;
-    top: calc(50% - 4rem);
-    width: calc(4rem * var(--has-gargoyle));
-    height: 8rem;
+    .throw-hitbox {
+      background-color: red;
+      position:absolute;
+      right: 0%;
+      top: calc(50% - 4rem);
+      width: calc(4rem * var(--has-gargoyle));
+      height: 8rem;
+    }
   }
 </style>
 

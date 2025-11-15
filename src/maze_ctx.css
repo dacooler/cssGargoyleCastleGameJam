@@ -19,13 +19,13 @@
   animation-fill-mode: both, both, both;
   animation-timing-function: step-end;
 
-  &:has(.repair.hole1:hover) {
+  &:has(.logic .repair.hole1:hover) {
     animation-name: none, hole2, hole3;
   }
-  &:has(.repair.hole2:hover) {
+  &:has(.logic .repair.hole2:hover) {
     animation-name: hole1, none, hole3;
   }
-  &:has(.repair.hole3:hover) {
+  &:has(.logic .repair.hole3:hover) {
     animation-name: hole1, hole2, none;
   }
 }

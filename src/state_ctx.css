@@ -21,23 +21,23 @@
   animation-play-state: paused, paused, paused;
   cursor: var(--cursor-alive) var(--cursor-x) var(--cursor-y), pointer;
 
-  &:has(.throw-hitbox:hover),
-  &:has(.repair:hover),
-  &:has(.respawn-point:hover) {
+  &:has(.logic .throw-hitbox:hover),
+  &:has(.logic .repair:hover),
+  &:has(.logic .respawn-point:hover) {
     animation-name: none, none, none;
     animation-play-state: paused, paused, paused;
   }
-  &:not(:has(.game-board:hover)),
-  &:has(.abyss:hover),
-  &:has(.yard:hover) {
+  &:not(:has(.logic .game-board:hover)),
+  &:has(.logic .abyss:hover),
+  &:has(.logic .yard:hover) {
     animation-name: state-dead, none, none;
     animation-play-state: running, paused, paused;
   }
-  &:has(.gargoyle-pickup:hover) {
+  &:has(.logic .gargoyle-pickup:hover) {
     animation-name: none, state-gargoyle, none;
     animation-play-state: paused, running, paused;
   }
-  &:has(.carpenter-pickup:hover) {
+  &:has(.logic .carpenter-pickup:hover) {
     animation-name: none, none, state-carpenter;
     animation-play-state: paused, paused, running;
   }

@@ -80,6 +80,26 @@ def maze_logic():
     return template.replace("CELLS", result)
 
 
+def maze_graphics():
+    with open("src/maze2.txt", "r", encoding="utf8") as f:
+        maze_lines = f.read()
+
+    result = ""
+    for y, line in enumerate(maze_lines.split("\n")):
+        for x, cell in enumerate(line.strip()):
+            if cell in ".":
+                pass
+            if cell in "123":
+                pass
+            if cell == "x":
+                pass
+
+    with open("src/maze_graphics.html", "r", encoding="utf8") as f:
+        template = f.read()
+
+    return template.replace("CELLS", result)
+
+
 def main():
     with open("src/game.html", "r", encoding="utf8") as f:
         game = f.read()
@@ -91,6 +111,10 @@ def main():
     game = game.replace("STORAGE_LOGIC", raw_file("src/storage_logic.html"))
     game = game.replace("YARD_LOGIC", raw_file("src/yard_logic.html"))
     game = game.replace("GATEROOM_LOGIC", raw_file("src/gateroom_logic.html"))
+    game = game.replace("MAZE_GRAPHICS", maze_graphics())
+    game = game.replace("STORAGE_GRAPHICS", raw_file("src/storage_graphics.html"))
+    game = game.replace("YARD_GRAPHICS", raw_file("src/yard_graphics.html"))
+    game = game.replace("GATEROOM_GRAPHICS", raw_file("src/gateroom_graphics.html"))
     game = game.replace("CURSORS", cursor_styles())
 
     with open("index.html", "w", encoding="utf8") as f:

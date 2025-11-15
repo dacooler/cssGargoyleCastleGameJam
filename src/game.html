@@ -66,16 +66,23 @@
 
     .gateroom {
       grid-area: g;
+      position: relative;
     }
     .yard {
       grid-area: y;
+      position: relative;
     }
     .maze {
       grid-area: m;
+      position: relative;
 
       display: grid;
       grid-template-columns: repeat(28, 1fr);
       grid-template-rows: repeat(11, 1fr);
+    }
+    .storage {
+      grid-area: s;
+      position: relative;
     }
 
     .end-box {
@@ -126,6 +133,10 @@
 
     .graphics {
       z-index: -3;
+
+      * {
+        transform-style: preserve-3d;
+      }
     }
   </style>
 </head>

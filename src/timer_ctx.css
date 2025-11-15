@@ -16,7 +16,7 @@
   animation-timing-function: linear, linear;
   animation-fill-mode: both, both;
 
-  &:has(.throw-hitbox:hover) {
+  &:has(.logic .throw-hitbox:hover) {
     animation-name: none, difficulty;
   }
 }
