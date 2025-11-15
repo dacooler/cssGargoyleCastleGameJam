@@ -1,0 +1,16 @@
+<style>
+  .abyss.hole {
+    width: calc(100% * var(--hole) * (1 - var(--has-carpenter)));
+  }
+  .repair.hole {
+    width: calc(100% * var(--hole) * var(--has-carpenter));
+  }
+  .cell.hole {
+    width: calc(100% * (1 - var(--hole)));
+  }
+  .storage {
+    grid-area: s;
+  }
+</style>
+
+MAZE_CELLS

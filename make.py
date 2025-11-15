@@ -74,7 +74,10 @@ def maze_logic():
             if cell == "x":
                 result += f"<div class='abyss' style='grid-area: {y+1}/{x+1}'></div>"
 
-    return result
+    with open("src/maze_logic.html", "r", encoding="utf8") as f:
+        template = f.read()
+
+    return template.replace("CELLS", result)
 
 
 def main():

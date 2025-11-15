@@ -9,7 +9,13 @@
     }
 
     :root {
-      --logic-opacity: 0.1;
+      --logic-opacity: 0;
+    }
+    :root:has(#enable-debug:checked) {
+      --logic-opacity: 1;
+    }
+    #enable-debug {
+      opacity: var(--logic-opacity);
     }
 
     CURSORS
@@ -36,7 +42,6 @@
       top: calc(50% - 35rem);
       width: 160rem;
       height: 70rem;
-      z-index: 0;
 
       perspective: 100rem;
     }
@@ -47,7 +52,6 @@
       bottom: 5rem;
       transform: rotateX(30deg);
       transform-origin: 50% 100%;
-      background-color: white;
       margin: 0;
     }
 
@@ -62,11 +66,16 @@
 
     .gateroom {
       grid-area: g;
-      background-color: #eee;
     }
     .yard {
       grid-area: y;
-      background-color: #fff;
+    }
+    .maze {
+      grid-area: m;
+
+      display: grid;
+      grid-template-columns: repeat(28, 1fr);
+      grid-template-rows: repeat(11, 1fr);
     }
 
     .end-box {
@@ -88,50 +97,41 @@
       z-index: -1;
     }
 
-    .maze {
-      grid-area: m;
-
-      display: grid;
-      grid-template-columns: repeat(28, 1fr);
-      grid-template-rows: repeat(11, 1fr);
+    .logic {
+      z-index: 0;
     }
-
-    .abyss {
-      background-color: #444;
+    .logic, .end-box, .stop-box {
+      opacity: var(--logic-opacity);
     }
-    .abyss.hole {
-      width: calc(100% * var(--hole) * (1 - var(--has-carpenter)));
-    }
-    .repair {
-      background-color: #400;
-    }
-    .repair.hole {
-      width: calc(100% * var(--hole) * var(--has-carpenter));
-    }
-    .cell {
-      background-color: rgb(132, 95, 62);
-    }
-    .hole {
-      width: calc(100% * (1 - var(--hole)));
-    }
-    .storage {
-      grid-area: s;
-      background-color: #eee;
+    .logic {
+      .gateroom {
+        background-color: #eee;
+      }
+      .yard {
+        background-color: #fff;
+      }
+      .abyss {
+        background-color: #444;
+      }
+      .repair {
+        background-color: #400;
+      }
+      .cell {
+        background-color: #964;
+      }
+      .storage {
+        background-color: #eee;
+      }
     }
 
     .graphics {
       z-index: -3;
     }
-    .graphics * {
-      background-color: pink !important;
-    }
-    .logic, .end-box, .stop-box {
-      opacity: var(--logic-opacity);
-    }
   </style>
 </head>
 
 <body>
+  <input type="checkbox" id="enable-debug">
   <div class="state-ctx">
     <div class="timer-ctx">
       <div class="maze-ctx">
