@@ -28,7 +28,7 @@
 
     CURSORS
 
-    body {
+    .state-ctx {
       animation-name: state-dead, state-gargoyle, state-carpenter;
       animation-duration: 1e-6s, 1e-6s, 1e-6s;
       animation-fill-mode: both, both, both;
@@ -56,6 +56,26 @@
     }
     @keyframes state-carpenter {
       to { cursor: var(--cursor-carpenter) var(--cursor-x) var(--cursor-y), pointer; }
+    }
+
+
+    @property --since-hit {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0.0;
+    }
+
+    .timer-ctx {
+      --approach-time: 30.0;
+      --approach: min(1.0, var(--since-hit) / var(--approach-time));
+      animation-name: approach;
+      animation-duration: 1000s;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+    }
+
+    @keyframes approach {
+      to { --since-hit: 1000 }
     }
 
     .gameBoard {
@@ -99,18 +119,22 @@
 </head>
 
 <body>
-  <div class="gameBoard">
-    <div class="gateroom">
-      GATEROOM
-    </div>
-    <div class="yard">
-      YARD
-    </div>
-    <div class="maze">
-      MAZE
-    </div>
-    <div class="storage">
-      STORAGE
+  <div class="state-ctx">
+    <div class="timer-ctx">
+      <div class="gameBoard">
+        <div class="gateroom">
+          GATEROOM
+        </div>
+        <div class="yard">
+          YARD
+        </div>
+        <div class="maze">
+          MAZE
+        </div>
+        <div class="storage">
+          STORAGE
+        </div>
+      </div>
     </div>
   </div>
 </body>

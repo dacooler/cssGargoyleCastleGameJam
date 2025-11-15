@@ -17,7 +17,7 @@ def cursor_styles():
 
     cursors = {}
 
-    for name in ["alive", "gargoyle"]:
+    for name in ["alive", "gargoyle", "carpenter", "dead"]:
         cursors[name] = Image.open(f"assets/player_{name}.png")
 
     for i, exp in enumerate(range(num_sizes)):
@@ -74,12 +74,20 @@ def storage():
     return result
 
 
+def yard():
+    with open("src/yard.html", "r", encoding="utf8") as f:
+        result = f.read()
+
+    return result
+
+
 def main():
     with open("src/game.html", "r", encoding="utf8") as f:
         game = f.read()
 
     game = game.replace("MAZE", maze())
     game = game.replace("STORAGE", storage())
+    game = game.replace("YARD", yard())
     game = game.replace("CURSORS", cursor_styles())
 
     with open("index.html", "w", encoding="utf8") as f:
