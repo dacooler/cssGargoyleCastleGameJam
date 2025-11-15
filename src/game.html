@@ -36,7 +36,7 @@
 
     .state-ctx {
       animation-name: state-dead, state-gargoyle, state-carpenter;
-      animation-duration: 1e-6s, 1e-6s, 1e-6s;
+      animation-duration: 1ms, 1ms, 1ms;
       animation-fill-mode: both, both, both;
       animation-play-state: paused, paused, paused;
       cursor: var(--cursor-alive) var(--cursor-x) var(--cursor-y), pointer;
@@ -79,22 +79,33 @@
       inherits: true;
       initial-value: 0.0;
     }
+    @property --approach-time {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 60.0;
+    }
 
     .timer-ctx {
-      --approach-time: 30.0;
       --approach: min(1.0, var(--since-hit) / var(--approach-time));
-      animation-name: approach;
-      animation-duration: 1000s;
-      animation-timing-function: linear;
-      animation-fill-mode: both;
+      animation-name: approach, difficulty;
+      animation-duration: 1000s, 300s;
+      animation-timing-function: linear, linear;
+      animation-fill-mode: both, both;
 
       &:has(.throw-hitbox:hover) {
-        animation-name: none;
+        animation-name: none, difficulty;
       }
     }
 
     @keyframes approach {
       to { --since-hit: 1000 }
+    }
+    @keyframes difficulty {
+      0% { --approach-time: 60.0 }
+      15% { --approach-time: 50.0 }
+      40% { --approach-time: 40.0 }
+      60% { --approach-time: 30.0 }
+      100% { --approach-time: 20.0 }
     }
 
     .gameBoard {
