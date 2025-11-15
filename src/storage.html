@@ -6,17 +6,19 @@
     position: absolute;
     left: 5rem;
     top: 5rem;
-    width: 5rem;
+    width: calc(5rem * calc(1 - var(--has-dead)));
     height: 5rem;
+    background-color: gray;
   }
   .carpenter-pickup {
     position: absolute;
     right: 5rem;
     top: 5rem;
-    width: 5rem;
+    width: calc(5rem * calc(1 - var(--has-dead)));
     height: 5rem;
+    background-color: brown;
   }
 </style>
 
-<img class="gargoyle-pickup" src="assets/gargoyle.png">
-<img class="carpenter-pickup" src="assets/gargoyle.png">
+<div class="gargoyle-pickup"></div>
+<div class="carpenter-pickup"></div>

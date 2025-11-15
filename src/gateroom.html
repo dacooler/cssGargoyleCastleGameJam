@@ -3,6 +3,16 @@
     position: relative;
   }
 
+  .respawn-point {
+    position: absolute;
+    background-color: lightgreen;
+
+    left: 4rem;
+    top: 4rem;
+    width: calc(12rem * var(--has-dead));
+    height: 12rem;
+  }
+
   .throw-hitbox {
     background-color: red;
     position:absolute;
@@ -14,3 +24,4 @@
 </style>
 
 <div class="throw-hitbox"></div>
+<div class="respawn-point"></div>

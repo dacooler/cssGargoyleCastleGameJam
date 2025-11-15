@@ -1,3 +1,8 @@
+@property --has-dead {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
 @property --has-gargoyle {
   syntax: "<number>";
   inherits: true;
@@ -17,7 +22,8 @@
   cursor: var(--cursor-alive) var(--cursor-x) var(--cursor-y), pointer;
 
   &:has(.throw-hitbox:hover),
-  &:has(.repair:hover) {
+  &:has(.repair:hover),
+  &:has(.respawn-point:hover) {
     animation-name: none, none, none;
     animation-play-state: paused, paused, paused;
   }
@@ -40,6 +46,7 @@
 @keyframes state-dead {
   to {
     cursor: var(--cursor-dead) var(--cursor-x) var(--cursor-y), pointer;
+    --has-dead: 1;
   }
 }
 @keyframes state-gargoyle {
