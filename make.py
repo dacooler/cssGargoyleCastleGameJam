@@ -53,7 +53,7 @@ def cursor_styles():
 
 
 def maze():
-    with open("src/maze.txt", "r", encoding="utf8") as f:
+    with open("src/maze2.txt", "r", encoding="utf8") as f:
         maze_lines = f.read()
 
     result = ""
