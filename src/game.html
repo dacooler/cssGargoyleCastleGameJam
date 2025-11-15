@@ -8,6 +8,8 @@
       box-sizing: border-box;
     }
 
+    CURSORS
+
     html {
       font-size: min(calc(100vw / 160), calc(100vh / 90));
       background-color: black;
@@ -26,7 +28,11 @@
       margin: 0;
     }
 
-    CURSORS
+    @property --has-gargoyle {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
 
     .state-ctx {
       animation-name: state-dead, state-gargoyle, state-carpenter;
@@ -35,6 +41,11 @@
       animation-play-state: paused, paused, paused;
       cursor: var(--cursor-alive) var(--cursor-x) var(--cursor-y), pointer;
 
+
+      &:has(.throw-hitbox:hover) {
+        animation-name: none, none, none;
+        animation-play-state: paused, paused, paused;
+      }
       &:has(.abyss:hover) {
         animation-name: state-dead, none, none;
         animation-play-state: running, paused, paused;
@@ -48,11 +59,15 @@
         animation-play-state: paused, paused, running;
       }
     }
+
     @keyframes state-dead {
       to { cursor: var(--cursor-dead) var(--cursor-x) var(--cursor-y), pointer; }
     }
     @keyframes state-gargoyle {
-      to { cursor: var(--cursor-gargoyle) var(--cursor-x) var(--cursor-y), pointer; }
+      to {
+        cursor: var(--cursor-gargoyle) var(--cursor-x) var(--cursor-y), pointer;
+        --has-gargoyle: 1;
+      }
     }
     @keyframes state-carpenter {
       to { cursor: var(--cursor-carpenter) var(--cursor-x) var(--cursor-y), pointer; }
@@ -72,6 +87,10 @@
       animation-duration: 1000s;
       animation-timing-function: linear;
       animation-fill-mode: both;
+
+      &:has(.throw-hitbox:hover) {
+        animation-name: none;
+      }
     }
 
     @keyframes approach {

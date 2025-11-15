@@ -81,6 +81,13 @@ def yard():
     return result
 
 
+def gateroom():
+    with open("src/gateroom.html", "r", encoding="utf8") as f:
+        result = f.read()
+
+    return result
+
+
 def main():
     with open("src/game.html", "r", encoding="utf8") as f:
         game = f.read()
@@ -88,6 +95,7 @@ def main():
     game = game.replace("MAZE", maze())
     game = game.replace("STORAGE", storage())
     game = game.replace("YARD", yard())
+    game = game.replace("GATEROOM", gateroom())
     game = game.replace("CURSORS", cursor_styles())
 
     with open("index.html", "w", encoding="utf8") as f:
