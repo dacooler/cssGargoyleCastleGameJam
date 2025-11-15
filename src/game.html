@@ -1,10 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Gargoyle Grenadier: Gate Guard</title>
-  </head>
 
-  <body>
+<head>
+  <title>Gargoyle Grenadier: Gate Guard</title>
+  <style>
+    html {
+      font-size: min(calc(100vw / 160), calc(100vh / 90));
+      background-color: black;
+      margin: 0;
+    }
 
-  </body>
+    body {
+      width: 160rem;
+      height: 90rem;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      margin: 0;
+    }
+
+    .gameBoard {
+      display: grid;
+    }
+
+    .yard {}
+  </style>
+</head>
+
+<body>
+  <div class="gameBoard">
+    <div class="gateroom">
+      GATEROOM
+    </div>
+    <div class="yard">
+      YARD
+    </div>
+    <div class="maze">
+      MAZE
+    </div>
+    <div class="storage">
+      STORAGE
+    </div>
+
+  </div>
+</body>
+
 </html>
