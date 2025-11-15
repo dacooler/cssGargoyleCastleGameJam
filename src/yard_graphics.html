@@ -3,5 +3,17 @@
     .yard {
       background-color: lightblue;
     }
+    .turtle {
+      position: absolute;
+      left: calc(100% * (1 - var(--approach)));
+      top: calc(50% - 20rem);
+
+      width: 24rem;
+      height: 24rem;
+      transform: rotateX(-30deg);
+      transform-origin: 50% 100%;
+    }
   }
 </style>
+
+<img class="turtle" src="assets/tortoise.png">
