@@ -85,14 +85,27 @@ def maze_graphics():
         maze_lines = f.read()
 
     result = ""
+
+    has_permanent = set()
+
     for y, line in enumerate(maze_lines.split("\n")):
         for x, cell in enumerate(line.strip()):
             if cell in ".":
-                pass
+                result += f"<div class='cell' style='grid-area: {y+1}/{x+1}'></div>"
+                has_permanent.add((x, y))
             if cell in "123":
                 pass
             if cell == "x":
                 pass
+
+    for (x, y) in has_permanent:
+        if (x, y + 1) not in has_permanent:
+            result += f"<div class='scaffold horiz' style='grid-area: {y+1}/{x+1}'></div>"
+        if (x + 1, y) not in has_permanent:
+            result += f"<div class='scaffold vert' style='grid-area: {y+1}/{x+1}'></div>"
+        if (x - 1, y) not in has_permanent:
+            result += f"<div class='scaffold vert' style='grid-area: {y+1}/{x}'></div>"
+
 
     with open("src/maze_graphics.html", "r", encoding="utf8") as f:
         template = f.read()

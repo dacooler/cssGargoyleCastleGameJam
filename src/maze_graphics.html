@@ -1,7 +1,24 @@
 <style>
   .graphics {
-    .maze {
-      background-color: lightgreen;
+    .cell {
+      background-image: url("assets/wood.png");
+      background-size: cover;
+    }
+    .scaffold {
+      height: 400%;
+      background-image: url("assets/scaffold.png");
+      background-size: 100% 25%;
+      mask: linear-gradient(black, transparent);
+      &.horiz {
+        transform: translate(0, 25%) rotateX(-90deg);
+        transform-origin: 50% 0%;
+      }
+      &.vert {
+        transform: translate(50%, 12.5%) rotateX(-90deg) rotateY(90deg);
+        transform-origin: 50% 0%;
+      }
     }
   }
 </style>
+
+MAZE_CELLS
