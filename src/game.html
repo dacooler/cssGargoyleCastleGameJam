@@ -32,6 +32,7 @@
       top: calc(50% - 35rem);
       width: 160rem;
       height: 70rem;
+      z-index: 0;
 
       perspective: 100rem;
     }
@@ -64,7 +65,24 @@
       background-color: #fff;
     }
 
-
+    .end-box {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #800;
+      z-index: max(-2, calc(1 + 1e9 * (var(--approach) - 1)));
+    }
+    .stop-box {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #008;
+      z-index: -1;
+    }
 
     .maze {
       grid-area: m;
@@ -103,6 +121,8 @@
   <div class="state-ctx">
     <div class="timer-ctx">
       <div class="maze-ctx">
+        <div class="end-box"></div>
+        <div class="stop-box"></div>
         <div class="aspect">
           <div class="perspective">
             <div class="game-board">
