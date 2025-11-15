@@ -55,19 +55,23 @@ def main():
     with open("src/maze.txt", "r", encoding="utf8") as f:
         maze_lines = f.read()
 
-    maze_cells = ""
+    maze = ""
     for y, line in enumerate(maze_lines.split("\n")):
         for x, cell in enumerate(line.strip()):
             if cell == ".":
-                maze_cells += f"<div class='cell' style='grid-area: {y+1}/{x+1}'></div>"
+                maze += f"<div class='cell' style='grid-area: {y+1}/{x+1}'></div>"
             if cell == "x":
-                maze_cells += f"<div class='abyss' style='grid-area: {y+1}/{x+1}'></div>"
+                maze += f"<div class='abyss' style='grid-area: {y+1}/{x+1}'></div>"
 
+
+    with open("src/storage.html", "r", encoding="utf8") as f:
+        storage = f.read()
 
     with open("src/game.html", "r", encoding="utf8") as f:
         game = f.read()
 
-    game = game.replace("MAZE", maze_cells)
+    game = game.replace("MAZE", maze)
+    game = game.replace("STORAGE", storage)
     game = game.replace("CURSORS", cursor_styles())
 
     with open("index.html", "w", encoding="utf8") as f:
