@@ -27,6 +27,11 @@
       inherits: true;
       initial-value: 0;
     }
+    @property --has-carpenter {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
 
     .state-ctx {
       animation-name: state-dead, state-gargoyle, state-carpenter;
@@ -35,8 +40,8 @@
       animation-play-state: paused, paused, paused;
       cursor: var(--cursor-alive) var(--cursor-x) var(--cursor-y), pointer;
 
-
-      &:has(.throw-hitbox:hover) {
+      &:has(.throw-hitbox:hover),
+      &:has(.repair:hover) {
         animation-name: none, none, none;
         animation-play-state: paused, paused, paused;
       }
@@ -55,7 +60,9 @@
     }
 
     @keyframes state-dead {
-      to { cursor: var(--cursor-dead) var(--cursor-x) var(--cursor-y), pointer; }
+      to {
+        cursor: var(--cursor-dead) var(--cursor-x) var(--cursor-y), pointer;
+      }
     }
     @keyframes state-gargoyle {
       to {
@@ -64,7 +71,10 @@
       }
     }
     @keyframes state-carpenter {
-      to { cursor: var(--cursor-carpenter) var(--cursor-x) var(--cursor-y), pointer; }
+      to {
+        cursor: var(--cursor-carpenter) var(--cursor-x) var(--cursor-y), pointer;
+        --has-carpenter: 1;
+      }
     }
 
 
@@ -109,7 +119,6 @@
       width: 160rem;
       height: 70rem;
 
-
       perspective: 100rem;
     }
     .perspective {
@@ -142,6 +151,24 @@
       grid-area: y;
       background-color: #fff;
     }
+
+
+
+    @property --hole1 {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+    @property --hole2 {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+    @property --hole3 {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
     .maze {
       grid-area: m;
       background-color: #ddd;
@@ -149,12 +176,58 @@
       display: grid;
       grid-template-columns: repeat(28, 1fr);
       grid-template-rows: repeat(11, 1fr);
+
+      animation-name: hole1, hole2, hole3;
+      animation-duration: 10s, 12s, 25s;
+      animation-fill-mode: both, both, both;
+      animation-timing-function: step-end;
+
+      &:has(.repair.hole1:hover) {
+        animation-name: none, hole2, hole3;
+      }
+      &:has(.repair.hole2:hover) {
+        animation-name: hole1, none, hole3;
+      }
+      &:has(.repair.hole3:hover) {
+        animation-name: hole1, hole2, none;
+      }
+    }
+    @keyframes hole1 {
+      to { --hole1: 1; }
+    }
+    @keyframes hole2 {
+      to { --hole2: 1; }
+    }
+    @keyframes hole3 {
+      to { --hole3: 1; }
+    }
+
+    .hole1 {
+      --hole: var(--hole1);
+    }
+    .hole2 {
+      --hole: var(--hole2);
+    }
+    .hole3 {
+      --hole: var(--hole3);
     }
     .abyss {
       background-color: #444;
     }
+    .abyss.hole {
+      width: calc(100% * var(--hole) * (1 - var(--has-carpenter)));
+    }
+    .repair {
+      background-color: #400;
+    }
+    .repair.hole {
+      width: calc(100% * var(--hole) * var(--has-carpenter));
+    }
     .cell {
       background-color: rgb(132, 95, 62);
+    }
+    .hole {
+      width: calc(100% * (1 - var(--hole)));
     }
     .storage {
       grid-area: s;

@@ -59,8 +59,12 @@ def maze():
     result = ""
     for y, line in enumerate(maze_lines.split("\n")):
         for x, cell in enumerate(line.strip()):
-            if cell == ".":
+            if cell in ".":
                 result += f"<div class='cell' style='grid-area: {y+1}/{x+1}'></div>"
+            if cell in "123":
+                result += f"<div class='cell hole hole{cell}' style='grid-area: {y+1}/{x+1}'></div>"
+                result += f"<div class='repair hole hole{cell}' style='grid-area: {y+1}/{x+1}'></div>"
+                result += f"<div class='abyss hole hole{cell}' style='grid-area: {y+1}/{x+1}'></div>"
             if cell == "x":
                 result += f"<div class='abyss' style='grid-area: {y+1}/{x+1}'></div>"
 

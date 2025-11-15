@@ -2,9 +2,9 @@ x..xxxxxxxxxxxxxxxxxxxxxxxxx
 x.....x..................xxx
 x..xx.x..................xxx
 x..x..x..xxxxxx.xxxx.xx..xxx
-x..x.xx..xxxxxx.xxxx.xx..xxx
-x..x..x..xxxxxx.x....xx..xxx
-x..xx.x..x...xx.x.xxxxx..xxx
+x..x.xx22xxxxxx.xxxx.xx11xxx
+x33x..x22xxxxxx.x....xx11xxx
+x33xx.x..x...xx.x.xxxxx..xxx
 x..xx.x..x.x.xx.x.xxx....xxx
 x........x.x.xx.x.xxx.x.....
 x..........x....x.....x.....
