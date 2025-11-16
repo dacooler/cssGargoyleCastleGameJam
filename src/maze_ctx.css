@@ -31,8 +31,9 @@
 .maze-ctx {
   animation-name: hole1, hole2, hole3;
   animation-duration: 5s, 5s, 5s;
-  animation-delay: 5s, 10s, 20s;
+  animation-delay: 30s, 80s, 60s;
   animation-fill-mode: both, both, both;
+  animation-timing-function: ease-in, ease-in, ease-in;
 
   &:has(.logic .repair.hole1:hover) {
     animation-name: none, hole2, hole3;
