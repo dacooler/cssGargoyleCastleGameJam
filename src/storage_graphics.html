@@ -2,6 +2,60 @@
   .graphics {
     .storage {
       background-color: pink;
+
+      .gargoyles .gargoyle {
+        background-image: url("assets/gargoylepile.png");
+        width: 10rem;
+        height: 10rem;
+        background-size: 100% 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+
+      .gargoyle:nth-child(1) {
+        transform: rotateX(-60deg);
+        transform-origin: 50% 100%;
+      }
+
+      .gargoyle:nth-child(2) {
+        transform: translateX(-50%) rotate(90deg) rotateX(-60deg) translateX(-50%);
+        transform-origin: 50% 100%;
+      }
+
+      .gargoyle:nth-child(3) {
+        transform: translateX(50%) rotate(-90deg) rotateX(-60deg) translateX(50%);
+        transform-origin: 50% 100%;
+      }
+
+      .gargoyle:nth-child(4) {
+        transform: translateX(-20%) rotateX(-110deg) translateZ(-7.5rem);
+        transform-origin: 50% 100%;
+      }
+
+      .planks {
+        background-image: url("assets/woodpile.png");
+        width: 12rem;
+        height: 12rem;
+        background-size: 100% 100%;
+        transform: rotateX(-50deg);
+        transform-origin: 50% 100%;
+        position: absolute;
+        top: -5rem;
+        right: 5rem;
+      }
     }
   }
 </style>
+<div class="gargoyles">
+  <div class="gargoyle">
+  </div>
+  <div class="gargoyle">
+  </div>
+  <div class="gargoyle">
+  </div>
+  <div class="gargoyle">
+  </div>
+</div>
+<div class="planks">
+</div>
