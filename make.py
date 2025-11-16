@@ -77,7 +77,7 @@ def maze_logic():
     with open("src/maze_logic.html", "r", encoding="utf8") as f:
         template = f.read()
 
-    return template.replace("CELLS", result)
+    return template.replace("MAZE_CELLS", result)
 
 
 def maze_graphics():
@@ -110,7 +110,7 @@ def maze_graphics():
     with open("src/maze_graphics.html", "r", encoding="utf8") as f:
         template = f.read()
 
-    return template.replace("CELLS", result)
+    return template.replace("MAZE_CELLS", result)
 
 
 def main():

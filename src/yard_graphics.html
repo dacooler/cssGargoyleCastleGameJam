@@ -13,7 +13,20 @@
       transform: rotateX(-30deg);
       transform-origin: 50% 100%;
     }
+    .projectile {
+      position: absolute;
+      left: calc(100% * var(--flight) * (1 - var(--approach)));
+      top: calc(50% - 4rem);
+
+      width: calc(5rem * var(--flight-visible));
+      height: 5rem;
+      transform: translateZ(calc(3rem + 50rem * var(--flight) * (1 - var(--flight))))
+        rotateX(-30deg)
+        rotate(calc(var(--flight) * 470deg));
+      transform-origin: 50% 50%;
+    }
   }
 </style>
 
 <img class="turtle" src="assets/tortoise.png">
+<img class="projectile" src="assets/gargoyle.png">

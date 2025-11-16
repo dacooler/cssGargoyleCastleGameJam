@@ -8,16 +8,34 @@
   inherits: true;
   initial-value: 60.0;
 }
+@property --flight-visible {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0.0;
+}
+@property --flight {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0.0;
+}
+@property --attack-enabled {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0.0;
+}
 
 .timer-ctx {
   --approach: min(1.0, var(--since-hit) / var(--approach-time));
-  animation-name: approach, difficulty;
-  animation-duration: 1000s, 300s;
-  animation-timing-function: linear, linear;
-  animation-fill-mode: both, both;
+  animation-name: approach, difficulty, flight;
+  animation-duration: 1000s, 300s, 2s;
+  animation-timing-function: linear, linear, linear;
+  animation-fill-mode: both, both, both;
 
   &:has(.logic .throw-hitbox:hover) {
-    animation-name: none, difficulty;
+    animation-name: approach, difficulty, none;
+  }
+  &:has(.attack-box:hover) {
+    animation-name: none, difficulty, flight;
   }
 }
 
@@ -30,4 +48,19 @@
   40% { --approach-time: 40.0 }
   60% { --approach-time: 30.0 }
   100% { --approach-time: 20.0 }
+}
+@keyframes flight {
+  0% { --flight: 0 }
+  50% { --flight: 1 }
+  100% { --flight: 1 }
+
+  0% { --flight-visible: 0 }
+  1% { --flight-visible: 1 }
+  50% { --flight-visible: 1 }
+  51% { --flight-visible: 0 }
+
+  50% { --attack-enabled: 0 }
+  51% { --attack-enabled: 1 }
+  99% { --attack-enabled: 1 }
+  100% { --attack-enabled: 0 }
 }

@@ -8,6 +8,15 @@
       box-sizing: border-box;
     }
 
+    #animator {
+      animation: animator 1s infinite linear;
+      width: 0px;
+      height: 10px;
+    }
+    @keyframes animator {
+      to { width: 100px }
+    }
+
     :root {
       --logic-opacity: 0;
     }
@@ -15,8 +24,11 @@
       --logic-opacity: 1;
     }
     #enable-debug {
+      position: fixed;
+      left: 0px;
+      top: 0px;
       opacity: var(--logic-opacity);
-      z-index: 3;
+      z-index: 99;
     }
 
     CURSORS
@@ -31,6 +43,14 @@
       height: 100vh;
       margin: 0;
       overflow: hidden;
+    }
+
+    .state-ctx {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
     }
 
     STATE_CTX
@@ -90,25 +110,39 @@
       position: fixed;
       left: 0;
       top: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       background-color: #800;
-      z-index: max(-2, calc(1 + 1e9 * (var(--approach) - 1)));
+      z-index: max(-2, calc(2 + 1e9 * (var(--approach) - 1)));
     }
     .stop-box {
       position: fixed;
       left: 0;
       top: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       background-color: #008;
       z-index: -1;
+    }
+    .attack-box {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: calc(100% * var(--attack-enabled));
+      height: 100%;
+      background-color: #080;
+      z-index: 1;
+      transition: height 2s step-end;
+      &:hover {
+        height: 0vh;
+        transition-duration: 0s;
+      }
     }
 
     .logic {
       z-index: 0;
     }
-    .logic, .end-box, .stop-box {
+    .logic, .end-box, .stop-box, .attack-box {
       opacity: var(--logic-opacity);
     }
     .logic {
@@ -144,11 +178,13 @@
 
 <body>
   <input type="checkbox" id="enable-debug">
+  <div id="animator"></div>
   <div class="state-ctx">
     <div class="timer-ctx">
       <div class="maze-ctx">
         <div class="end-box"></div>
         <div class="stop-box"></div>
+        <div class="attack-box"></div>
         <div class="aspect graphics">
           <div class="perspective">
             <div class="game-board">
