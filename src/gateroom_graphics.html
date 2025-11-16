@@ -58,7 +58,7 @@
     }
 
     .revive {
-      background-image: url("assets/frankenstein.png");
+      animation: revive-background 5s step-end infinite;
       width: 10rem;
       height: 10rem;
       background-size: 100% 100%;
@@ -111,7 +111,41 @@
         transform: rotateX(90deg) translateZ(2rem);
       }
     }
-
+  }
+  @keyframes revive-background {
+    0% {
+      background-image: url("assets/frankenstein.png");
+    }
+    30% {
+      background-image: url("assets/frankenstein_lightning_1.png"), url("assets/frankenstein.png");
+    }
+    35% {
+      background-image: url("assets/frankenstein.png");
+    }
+    40% {
+      background-image: url("assets/frankenstein_lightning_2.png"), url("assets/frankenstein.png");
+    }
+    45% {
+      background-image: url("assets/frankenstein.png");
+    }
+    60% {
+      background-image: url("assets/frankenstein_lightning_2.png"), url("assets/frankenstein.png");
+    }
+    65% {
+      background-image: url("assets/frankenstein_lightning_1.png"), url("assets/frankenstein.png");
+    }
+    70% {
+      background-image: url("assets/frankenstein.png");
+    }
+    80% {
+      background-image: url("assets/frankenstein_lightning_2.png"), url("assets/frankenstein.png");
+    }
+    85% {
+      background-image: url("assets/frankenstein.png");
+    }
+    95% {
+      background-image: url("assets/frankenstein_lightning_1.png"), url("assets/frankenstein.png");
+    }
   }
 </style>
 
