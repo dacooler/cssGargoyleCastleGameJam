@@ -35,15 +35,20 @@
       }
 
       .planks {
-        background-image: url("assets/woodpile.png");
+        background-image: url("assets/planks3d.png");
         width: 12rem;
         height: 12rem;
         background-size: 100% 100%;
-        transform: rotateX(-50deg);
-        transform-origin: 50% 100%;
         position: absolute;
-        top: -5rem;
+        top: 5rem;
         right: 5rem;
+
+        .planks {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          transform: rotate(91deg) translateZ(0.2rem) translateX(-0.2rem);
+        }
       }
     }
   }
@@ -59,4 +64,14 @@
   </div>
 </div>
 <div class="planks">
+  <div class="planks">
+    <div class="planks">
+      <div class="planks">
+        <div class="planks">
+          <div class="planks">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
