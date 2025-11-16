@@ -125,6 +125,7 @@ def main():
     game = game.replace("STATE_CTX", raw_file("src/state_ctx.css"))
     game = game.replace("TIMER_CTX", raw_file("src/timer_ctx.css"))
     game = game.replace("MAZE_CTX", raw_file("src/maze_ctx.css"))
+    game = game.replace("SCORE_CTX", raw_file("src/score_ctx.css"))
     game = game.replace("MAZE_LOGIC", maze_logic())
     game = game.replace("STORAGE_LOGIC", raw_file("src/storage_logic.html"))
     game = game.replace("YARD_LOGIC", raw_file("src/yard_logic.html"))

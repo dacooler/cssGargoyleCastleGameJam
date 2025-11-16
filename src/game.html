@@ -38,7 +38,7 @@
       background-color: black;
     }
 
-    html, body, .state-ctx, .timer-ctx, .maze-ctx {
+    html, body, .state-ctx, .timer-ctx, .maze-ctx, .score-ctx {
       width: 100vw;
       height: 100vh;
       margin: 0;
@@ -56,6 +56,7 @@
     STATE_CTX
     TIMER_CTX
     MAZE_CTX
+    SCORE_CTX
 
     .aspect {
       position: fixed;
@@ -166,8 +167,11 @@
       }
     }
 
-    .graphics {
+    .score {
       z-index: -3;
+    }
+    .graphics {
+      z-index: -4;
 
       * {
         transform-style: preserve-3d;
@@ -182,47 +186,49 @@
   <div class="state-ctx">
     <div class="timer-ctx">
       <div class="maze-ctx">
-        <div class="end-box"></div>
-        <div class="stop-box"></div>
-        <div class="attack-box"></div>
-        <div class="aspect graphics">
-          <div class="perspective">
-            <div class="game-board">
-              <div class="gateroom">
-                GATEROOM_GRAPHICS
-              </div>
-              <div class="yard">
-                YARD_GRAPHICS
-              </div>
-              <div class="maze">
-                MAZE_GRAPHICS
-              </div>
-              <div class="storage">
-                STORAGE_GRAPHICS
-              </div>
-              WALL_GRAPHICS
-            </div>
-          </div>
-        </div>
-        <div class="aspect logic">
-          <div class="perspective">
-            <div class="game-board">
-              <div class="gateroom">
-                GATEROOM_LOGIC
-              </div>
-              <div class="yard">
-                YARD_LOGIC
-              </div>
-              <div class="maze">
-                MAZE_LOGIC
-              </div>
-              <div class="storage">
-                STORAGE_LOGIC
+        <div class="score-ctx">
+          <p class="score">Score: </p>
+          <div class="end-box"></div>
+          <div class="stop-box"></div>
+          <div class="attack-box"></div>
+          <div class="aspect graphics">
+            <div class="perspective">
+              <div class="game-board">
+                <div class="gateroom">
+                  GATEROOM_GRAPHICS
+                </div>
+                <div class="yard">
+                  YARD_GRAPHICS
+                </div>
+                <div class="maze">
+                  MAZE_GRAPHICS
+                </div>
+                <div class="storage">
+                  STORAGE_GRAPHICS
+                </div>
+                WALL_GRAPHICS
               </div>
             </div>
           </div>
+          <div class="aspect logic">
+            <div class="perspective">
+              <div class="game-board">
+                <div class="gateroom">
+                  GATEROOM_LOGIC
+                </div>
+                <div class="yard">
+                  YARD_LOGIC
+                </div>
+                <div class="maze">
+                  MAZE_LOGIC
+                </div>
+                <div class="storage">
+                  STORAGE_LOGIC
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
     </div>
   </div>

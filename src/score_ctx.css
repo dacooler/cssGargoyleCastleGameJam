@@ -1,0 +1,36 @@
+@property --score {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.score-ctx {
+  animation: scoring 10000s linear both;
+  animation-play-state: paused;
+  counter-reset: score var(--score);
+
+  &:has(.logic:hover) {
+    animation-play-state: running;
+  }
+}
+
+.score {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  margin: 0;
+  width: auto;
+  font-size: 2rem;
+  background-color: #0008;
+  color: white;
+  padding: 1rem;
+}
+.score::after {
+  content: counter(score);
+}
+
+@keyframes scoring {
+  to {
+    --score: 10000;
+  }
+}
