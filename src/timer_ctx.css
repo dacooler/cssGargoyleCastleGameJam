@@ -18,6 +18,11 @@
   inherits: true;
   initial-value: 0.0;
 }
+@property --recoil {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0.0;
+}
 @property --attack-enabled {
   syntax: "<number>";
   inherits: true;
@@ -50,12 +55,16 @@
   100% { --approach-time: 20.0 }
 }
 @keyframes flight {
-  0% { --flight: 0 }
+  5% { --flight: 0 }
   50% { --flight: 1 }
   100% { --flight: 1 }
 
-  0% { --flight-visible: 0 }
-  1% { --flight-visible: 1 }
+  0% { --recoil: 0 }
+  5% { --recoil: 1 }
+  100% { --recoil: 0 }
+
+  4% { --flight-visible: 0 }
+  5% { --flight-visible: 1 }
   50% { --flight-visible: 1 }
   51% { --flight-visible: 0 }
 
