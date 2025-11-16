@@ -13,11 +13,26 @@
   inherits: true;
   initial-value: 0;
 }
+@property --cracks1 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --cracks2 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --cracks3 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
 .maze-ctx {
   animation-name: hole1, hole2, hole3;
-  animation-duration: 10s, 12s, 25s;
+  animation-duration: 5s, 5s, 5s;
+  animation-delay: 5s, 10s, 20s;
   animation-fill-mode: both, both, both;
-  animation-timing-function: step-end;
 
   &:has(.logic .repair.hole1:hover) {
     animation-name: none, hole2, hole3;
@@ -30,20 +45,29 @@
   }
 }
 @keyframes hole1 {
-  to { --hole1: 1; }
+  0% { --cracks1: 0 }
+  99% { --cracks1: 1; --hole1: 0; }
+  100% { --cracks1: 0; --hole1: 1; }
 }
 @keyframes hole2 {
-  to { --hole2: 1; }
+  0% { --cracks2: 0 }
+  99% { --cracks2: 1; --hole2: 0; }
+  100% { --cracks2: 0; --hole2: 1; }
 }
 @keyframes hole3 {
-  to { --hole3: 1; }
+  0% { --cracks3: 0 }
+  99% { --cracks3: 1; --hole3: 0; }
+  100% { --cracks3: 0; --hole3: 1; }
 }
 .hole1 {
   --hole: var(--hole1);
+  --cracks: var(--cracks1);
 }
 .hole2 {
   --hole: var(--hole2);
+  --cracks: var(--cracks2);
 }
 .hole3 {
   --hole: var(--hole3);
+  --cracks: var(--cracks3);
 }

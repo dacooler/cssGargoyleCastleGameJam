@@ -18,6 +18,21 @@
         transform-origin: 50% 0%;
       }
     }
+    .bridge {
+      background-image: url("assets/wood-repair.png");
+      background-size: 100% 100%;
+      transform: translateZ(1rem) scaleX(75%) scaleY(150%);
+      opacity: calc(max(100% * (1 - var(--hole)), 50% * var(--has-carpenter)));
+      &::before {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: url("assets/wood-repair_cracks.png");
+        background-size: 100% 100%;
+        opacity: calc(100% * var(--cracks));
+      }
+    }
   }
 </style>
 

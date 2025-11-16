@@ -87,6 +87,7 @@ def maze_graphics():
     result = ""
 
     has_permanent = set()
+    has_trap = dict()
 
     for y, line in enumerate(maze_lines.split("\n")):
         for x, cell in enumerate(line.strip()):
@@ -94,7 +95,7 @@ def maze_graphics():
                 result += f"<div class='cell' style='grid-area: {y+1}/{x+1}'></div>"
                 has_permanent.add((x, y))
             if cell in "123":
-                pass
+                has_trap[(x, y)] = cell
             if cell == "x":
                 pass
 
@@ -105,6 +106,10 @@ def maze_graphics():
             result += f"<div class='scaffold vert' style='grid-area: {y+1}/{x+1}'></div>"
         if (x - 1, y) not in has_permanent:
             result += f"<div class='scaffold vert' style='grid-area: {y+1}/{x}'></div>"
+
+    for (x, y), kind in has_trap.items():
+        if (x, y - 1) not in has_trap and (x - 1, y) not in has_trap:
+            result += f"<div class='bridge hole{kind}' style='grid-area: {y+1}/{x+1}/span 2/span 2'></div>"
 
 
     with open("src/maze_graphics.html", "r", encoding="utf8") as f:
