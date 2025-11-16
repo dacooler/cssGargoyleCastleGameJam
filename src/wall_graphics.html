@@ -19,6 +19,8 @@
       background-size: 6rem 6rem;
       transform: translate(100%, 0) rotateY(90deg) rotateZ(90deg);
       transform-origin: 0 0;
+      mask: url("assets/mask-gate-wall.svg") luminance;
+      mask-size: cover;
     }
     .left-wall {
       grid-area: g;
@@ -47,6 +49,8 @@
       background-size: 6rem 6rem;
       transform: translateZ(12rem) rotateZ(90deg) rotateX(-90deg);
       transform-origin: 0 0;
+      mask: url("assets/mask-vertical-wall.svg") luminance;
+      mask-size: cover;
     }
     .horizontal-wall {
       grid-area: 2 / 1 / 2 / 4;
@@ -55,6 +59,8 @@
       height: 32rem;
       transform: translateZ(12rem) rotateX(-90deg);
       transform-origin: 50% 0%;
+      mask: url("assets/mask-horizontal-wall.svg") luminance;
+      mask-size: cover;
     }
     .front-wall {
       grid-area: 3 / 1 / 3 / 4;
