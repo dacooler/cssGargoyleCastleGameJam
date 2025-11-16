@@ -133,6 +133,7 @@ def main():
     game = game.replace("STORAGE_GRAPHICS", raw_file("src/storage_graphics.html"))
     game = game.replace("YARD_GRAPHICS", raw_file("src/yard_graphics.html"))
     game = game.replace("GATEROOM_GRAPHICS", raw_file("src/gateroom_graphics.html"))
+    game = game.replace("WALL_GRAPHICS", raw_file("src/wall_graphics.html"))
     game = game.replace("CURSORS", cursor_styles())
 
     with open("index.html", "w", encoding="utf8") as f:

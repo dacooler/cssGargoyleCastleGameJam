@@ -1,0 +1,90 @@
+<style>
+  .graphics {
+    .back-wall {
+      grid-area: g;
+      transform: translate(0, -100%) rotateX(-90deg);
+      width: 100%;
+      height: 12rem;
+      bottom: 100%;
+      background: url("assets/wall.png");
+      background-size: 6rem 6rem;
+      transform-origin: 50% 100%;
+    }
+    .gate-wall {
+      grid-area: g;
+      justify-self: right;
+      width: 46rem;
+      height: 12rem;
+      background: url("assets/wall.png");
+      background-size: 6rem 6rem;
+      transform: translate(100%, 0) rotateY(90deg) rotateZ(90deg);
+      transform-origin: 0 0;
+    }
+    .left-wall {
+      grid-area: g;
+      width: 90rem;
+      height: 32rem;
+      background: url("assets/wall.png");
+      background-size: 6rem 6rem;
+      transform: translateZ(12rem) rotateZ(-90deg) translate(-100%, 0) rotateX(-90deg);
+      transform-origin: 0 0;
+    }
+    .right-wall {
+      grid-area: s;
+      justify-self: right;
+      width: 44rem;
+      height: 12rem;
+      background: url("assets/wall.png");
+      background-size: 6rem 6rem;
+      transform: translate(100%, 0) rotateY(90deg) rotateZ(90deg);
+      transform-origin: 0 0;
+    }
+    .vertical-wall {
+      grid-area: s;
+      width: 44rem;
+      height: 32rem;
+      background: url("assets/wall.png");
+      background-size: 6rem 6rem;
+      transform: translateZ(12rem) rotateZ(90deg) rotateX(-90deg);
+      transform-origin: 0 0;
+    }
+    .horizontal-wall {
+      grid-area: 2 / 1 / 2 / 4;
+      background: url("assets/wall.png");
+      background-size: 6rem 6rem;
+      height: 32rem;
+      transform: translateZ(12rem) rotateX(-90deg);
+      transform-origin: 50% 0%;
+    }
+    .front-wall {
+      grid-area: 3 / 1 / 3 / 4;
+      background: url("assets/wall.png");
+      background-size: 6rem 6rem;
+      height: 4rem;
+      transform: translateZ(4rem) rotateX(-90deg);
+      transform-origin: 50% 0%;
+    }
+
+    .wall-shadow {
+      display: block;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(transparent 37.5%, black 87.5%);
+    }
+  }
+</style>
+
+<div class="back-wall"></div>
+<div class="gate-wall"></div>
+<div class="left-wall">
+  <div class="wall-shadow"></div>
+</div>
+<div class="horizontal-wall">
+  <div class="wall-shadow"></div>
+</div>
+<div class="right-wall"></div>
+<div class="vertical-wall">
+  <div class="wall-shadow"></div>
+</div>
+<div class="front-wall"></div>
