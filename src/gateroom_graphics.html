@@ -3,5 +3,117 @@
     .gateroom {
       background-color: pink;
     }
+
+    /*CATAPULT*/
+    .catapult {
+      --scale: 3;
+      --catWidth: calc(2rem * var(--scale));
+      --catHeight: calc(2rem * var(--scale));
+      --catDepth: calc(4rem * var(--scale));
+      background-image: url("assets/catapult_front.png");
+      width: var(--catWidth);
+      height: var(--catDepth);
+      transform: rotateY(180deg) rotate(90deg) translateZ(calc(-0.4rem * var(--scale)));
+      background-size: 100% 100%;
+      position: relative;
+      left: 30rem;
+      top: 15rem;
+
+      .catapult-left {
+        background-image: url("assets/catapult.png");
+        width: var(--catDepth);
+        height: var(--catHeight);
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        transform-origin: 100% 100%;
+        background-size: 100% 100%;
+        transform: rotate(90deg) translateX(50%) rotateX(90deg) translateZ(calc(var(--catDepth) / -2)) translateY(calc(0.4rem * var(--scale)));
+      }
+
+      .catapult-right {
+        background-image: url("assets/catapult.png");
+        width: var(--catDepth);
+        height: var(--catHeight);
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        transform-origin: 100% 100%;
+        background-size: 100% 100%;
+        transform: rotate(90deg) translateX(50%) rotateX(90deg) translateZ(calc(var(--catDepth) / -2 - var(--catWidth))) translateY(calc(0.4rem * var(--scale)));
+        /*transform: rotate(90deg) translateX(50%) rotateX(90deg) translateZ(calc(var(--catDepth) / -2 - var(--catWidth))) translateY(3rem * var(--scale));*/
+      }
+
+      .catapult-arm {
+        background-image: url("assets/catapult_arm.png");
+        background-size: 100% 100%;
+        position: absolute;
+        left: 50%;
+        width: calc(0.75rem * var(--scale));
+        height: calc(3rem * var(--scale));
+        transform-origin: 50% 100%;
+        transform: translateX(-50%) rotateX(15deg);
+      }
+    }
+
+    .revive {
+      background-image: url("assets/frankenstein.png");
+      width: 10rem;
+      height: 10rem;
+      background-size: 100% 100%;
+      position: absolute;
+      top: -2rem;
+      left: 5rem;
+      transform-origin: 50% 100%;
+      transform: rotateX(-90deg);
+      /* matrix3d(
+          1, 0, 0, 0,
+          0, 1, 0.7, 0,
+          0, 0, 1, 0,
+          0, 0, 0, 1);
+        */
+
+
+      .frankenbed {
+        width: 10rem;
+        height: 10rem;
+        background-size: 100% 100%;
+        background-image: url("assets/frankenstein-bed.png");
+        position: absolute;
+        left: 0px;
+        top: 0;
+        transform: translateZ(2rem);
+      }
+
+      .frankenbed-top {
+        background-image: url("assets/frankenbed_top.png");
+        background-size: 100% 100%;
+        position: absolute;
+        left: 0px;
+        top: 100%;
+        height: 2rem;
+        width: 10rem;
+        transform-origin: 50% 0%;
+        transform: rotateX(90deg) translateZ(2rem);
+        ;
+      }
+    }
+
   }
 </style>
+
+<div class="catapult">
+  <div class="catapult-left">
+  </div>
+  <div class="catapult-right">
+  </div>
+  <div class="catapult-arm">
+  </div>
+</div>
+<div class="revive">
+  <div class="frankenbed">
+  </div>
+  <div class="frankenbed-top">
+  </div>
+
+</div>
